@@ -1,0 +1,171 @@
+{% extends 'general/base.html' %}
+{% block content %}
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Dashboard</h1>
+        <div class="d-flex mb-3 align-items-center justify-content-between mt-4 mb-0">
+                <a href="">Home</a>
+                <span>Hello, {{request.user}} </span>
+                <a href="{% url 'logout' %}" class="mt-4  btn btn-primary">Logout</a>
+                
+            </div>
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body mt-3 mb-3">
+                    
+                    <p> Electronics Inventory <p>
+                    <h1> {{num_electronics}} </h1>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body  mt-3 mb-3">
+                    
+                    <p> Electronics given to deparments </p>
+                    <h1>{{num_dep}} </h1>
+
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body  mt-3 mb-3">
+                    
+                        <p> E-Waste</p>
+                        <h1> {{num_ewaste}} </h1>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body  mt-3 mb-3">
+                     
+                     <p> Recycled</p>
+                     <h1> {{num_recycled}} </h1>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           
+        </div>
+          
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>All Electronics </div>
+                            <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Brand</th>
+                                        <th>Description</th>
+                                        <th>Category</th>
+                                        
+                                    </tr>
+                                </thead>
+                                 {% for electronic in AllElectronics %}
+                                
+                                <tbody>
+                                    <tr>
+                                        <td> {{electronic.Brand}} </td>
+                                        <td>{{electronic.Description}}</td>
+                                        <td>{{electronic.Category}}</td>
+
+                                    </tr>                        
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Assigned To Departments</div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        
+                                    </tr>
+                                    {% for electronic in AssignedElectronics %}
+                                </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>{{electronic.Item}}</td>
+                                        <td>{{electronic.Department}}</td>
+                                        <td>{{electronic.Quantity}}</td>
+
+                                    </tr>
+                                    {% endfor %}
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Electronics with issues(E-Waste)</div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Code</th>
+                                        <th>Status</th>
+                                        
+                                    </tr>
+                                    
+                                </thead>
+                                {% for electronic in ReportedElectronics%}
+                                <tbody>
+                                    <tr>
+                                        <td>{{electronic.Name}}</td>
+                                        <td>{{electronic.Department}}</td>
+                                        <td>{{electronic.Code}}</td>
+                                        <td>{{electronic.Status}}</td>
+
+                                    </tr>
+
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
+            </div>
+        
+    </div>
+</main>
+
+
+{% endblock content %}
+               

@@ -1,0 +1,54 @@
+{% extends 'general/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="d-flex mb-3 align-items-center justify-content-between mt-4 mb-0">
+                <a href="">Home</a>
+                <a href="" class="mt-4  btn btn-primary">Logout</a>
+                
+            </div>
+            
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Assigned Electronic</div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Department</th>
+                                        <th>Quantity</th>
+                                        
+                                    </tr>
+                                </thead>
+                                 
+                                <tbody>
+                               
+                                {% for e in assignedElectronic %}
+                                    <tr>
+                                        <td>{{e.Item}}</td>
+                                        <td>{{e.Department}} </td>
+                                        <td>{{e.Quantity}}</td>
+
+                                    </tr>
+                                    
+                                {% endfor %}
+                                </tbody>
+                             </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+{% endblock content %}
+               

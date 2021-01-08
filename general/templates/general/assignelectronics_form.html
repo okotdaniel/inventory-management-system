@@ -1,0 +1,46 @@
+{% extends 'general/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <div class="d-flex mb-3 align-items-center justify-content-between mt-4 mb-0">
+                <a href="">Home</a>
+                <a href="" class="mt-4  btn btn-primary">Logout</a>
+                
+            </div>
+            
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Assign Electronic</div>
+                        <div class="col-lg-5">
+                                <div class="card  border-0 rounded-lg ">
+                                   
+                                    <div class="card-body">
+                                        <form method="POST" >
+                                        {% csrf_token %}
+                                        {{form|crispy}}
+                                            
+
+                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                              <button class="btn btn-success" >Assign </button>
+                                            
+                                            </div>
+    
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </main>
+{% endblock content %}
+               

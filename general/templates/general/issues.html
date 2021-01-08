@@ -1,0 +1,65 @@
+
+
+
+
+
+{% extends 'general/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <main>
+        <div class="container-fluid">
+            <div class="d-flex mb-3 align-items-center justify-content-between mt-4 mb-0">
+                <a href="">Home</a>
+                <a href="" class="mt-4  btn btn-primary">Logout</a>
+                
+            </div>
+            
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                
+                <div class="col-xl-6">
+                    <div class="card mb-4">
+                        <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Reported</div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Issue</th>
+                                        <th>Code</th>
+                                        <th>Status </th>
+                                        
+                                    </tr>
+                                   
+                                    
+                                </thead>
+                                
+                                <tbody>
+                                 {% for ewaste in issuesQuery %}
+
+                                <tr>
+                                    <td>{{ewaste.Name}}</td>
+                                    <td>{{ewaste.Department}}</td>
+                                    <td>{{ewaste.Issue}}</td>
+                                    <td>{{ewaste.Code}}</td>
+                                    <td>{{ewaste.Status}}</td>
+                                </tr>
+                                {% endfor %}
+                                
+                                </tbody>
+                             </table>
+                </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+{% endblock content %} 
